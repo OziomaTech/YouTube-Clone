@@ -1,0 +1,168 @@
+/* CSS Variables for Light/Dark Mode */
+:root {
+  --bg-color: #fff;
+  --text-color: #000;
+  --card-bg: #f9f9f9;
+  --menu-bg: #f1f1f1;
+}
+
+body.dark-mode {
+  --bg-color: #181818;
+  --text-color: #fff;
+  --card-bg: #282828;
+  --menu-bg: #333;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: var(--bg-color);
+  color: var(--text-color);
+  scroll-behavior: smooth;
+}
+
+/* Header */
+header {
+  display: flex;
+  justify-self: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  border-bottom: 1px solid #ccc;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.logo-img {
+  width: 25px;
+  border-radius: 5px;
+}
+
+.darkmode-img {
+  width: 30px;
+  height: 25px;
+  border-radius: 5px;
+}
+
+.search-bar {
+  flex-grow: 1;
+  margin: 0 20px;
+  padding: 8px;
+  border: none;
+  background-color: var(--menu-bg);
+  border-radius: 8px;
+}
+
+.theme-toggle {
+  padding: 2px 2px;
+  cursor: pointer;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 200px;
+  position: fixed;
+  top: 60px;
+  left: 0;
+  bottom: 0;
+  background: var(--card-bg);
+  padding: 20px;
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar li {
+  padding: 10px 0;
+  cursor: pointer;
+}
+
+/* Scroll Menu */
+.scroll-menu {
+  display: flex;
+  overflow-x: auto;
+  padding: 10px 0;
+  background: var(--menu-bg);
+  white-space: nowrap;
+}
+
+.scroll-menu::-webkit-scrollbar {
+  display: none;
+}
+
+.menu-item {
+  padding: 8px 16px;
+  margin: 0 5px;
+  background: #ccc;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+.video-title {
+  display: flex;
+  align-items: center;
+}
+
+.channel-logo {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+/* Video Grid */
+.video-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+  padding: 20px;
+  margin-left: 220px; /* Adjust for sidebar */
+}
+
+.video-card {
+  background: var(--card-bg);
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.videos {
+  width: 100%;
+  height: 150px;
+  transition: transform 0.5s ease;
+}
+
+.videos:hover {
+  transform: scale(1.1);
+}
+
+.thumbnail {
+  width: 100%;
+  height: auto;
+  transition: transform 0.5s ease;
+}
+
+.thumbnail:hover {
+  transform: scale(1.1); /* Expand on hover */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .sidebar {
+    display: none; /* Hide sidebar on mobile */
+  }
+
+  .video-grid {
+    margin-left: 0;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  }
+}
+
+@media (max-width: 480px) {
+  .video-grid {
+    grid-template-columns: 1fr;
+  }
+}
