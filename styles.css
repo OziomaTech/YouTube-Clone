@@ -19,6 +19,7 @@ body {
   background: var(--bg-color);
   color: var(--text-color);
   scroll-behavior: smooth;
+  overflow: hidden;
 }
 
 /* Header */
@@ -30,9 +31,16 @@ header {
   border-bottom: 1px solid #ccc;
 }
 
+.logo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .logo {
   font-size: 24px;
   font-weight: bold;
+  padding-left: 8px;
 }
 
 .logo-img {
