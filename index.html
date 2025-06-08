@@ -21,8 +21,14 @@
           <span>YouTube</span>
         </div>
       </div>
-
-      <input type="text" placeholder="Search" class="search-bar" />
+      <input
+        type="text"
+        name=""
+        id="find"
+        placeholder="Search"
+        class="search-bar"
+        onkeyup="search()"
+      />
       <button class="theme-toggle" onclick="toggleTheme()">
         <img src="images/dark-mode.png" alt="" class="darkmode-img" />
       </button>
@@ -148,9 +154,149 @@
         </div>
 
 
+
+    <!-- Main Content -->
+    <main>
+      <!-- Side Scroll Menu -->
+      <div class="scroll-menu">
+        <div class="menu-item">All</div>
+        <div class="menu-item">Gaming</div>
+        <div class="menu-item">Music</div>
+        <div class="menu-item">Tech</div>
+        <div class="menu-item">Sports</div>
+      </div>
+
       <!-- Video Grid -->
       <div class="video-grid">
-        <div class="video-card">
+        <div class="video-card" data-video-id="1">
+          <video controls class="videos" poster="images/symphony.jpg">
+            <source src="videos/like synphony.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+          <div class="video-title">
+            <img
+              src="images/coding your future.png"
+              alt=""
+              class="channel-logo"
+            />
+            <h3>It's like a Symphony</h3>
+          </div>
+          <p>John Okeke</p>
+          <p>258k Views • 2 days</p>
+        </div>
+        <div class="video-card" data-video-id="2">
+          <video controls class="videos" poster="images/motivation.webp">
+            <source src="videos/motivation.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+          <div class="video-title">
+            <img
+              src="images/coding your future.png"
+              alt=""
+              class="channel-logo"
+            />
+            <h3>Strong Motivation</h3>
+          </div>
+          <p>Godfrey Ifechukwu</p>
+          <p>1.3M Views • 3 days</p>
+        </div>
+        <div class="video-card" data-video-id="3">
+          <video controls class="videos" poster="">
+            <source src="videos/nebulos news update.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+          <div class="video-title">
+            <img
+              src="images/coding your future.png"
+              alt=""
+              class="channel-logo"
+            />
+            <h3>Nebulos News</h3>
+          </div>
+          <p>Pascal Sigauke</p>
+          <p>1.8M Views • 5 hours</p>
+        </div>
+        <div class="video-card" data-video-id="4">
+          <video controls class="videos" poster="">
+            <source src="videos/Nigeria crypto system.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+          <div class="video-title">
+            <img
+              src="images/coding your future.png"
+              alt=""
+              class="channel-logo"
+            />
+            <h3>(Nigeria is blessed) The crypto system began in Nigeria</h3>
+          </div>
+          <p>Emmanuel Akponah</p>
+          <p>989k Views • 4 days</p>
+        </div>
+        <div class="video-card" data-video-id="5">
+          <video controls class="videos" poster="">
+            <source src="videos/now is the time.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+          <div class="video-title">
+            <img
+              src="images/coding your future.png"
+              alt=""
+              class="channel-logo"
+            />
+            <h3>Now is the time</h3>
+          </div>
+          <p>Pascal Sigauke</p>
+          <p>586k Views • 2 hours</p>
+        </div>
+        <div class="video-card" data-video-id="6">
+          <video controls class="videos" poster="">
+            <source src="videos/grow with Emma.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+          <div class="video-title">
+            <img
+              src="images/coding your future.png"
+              alt=""
+              class="channel-logo"
+            />
+            <h3>Grow with Emma</h3>
+          </div>
+          <p>Emmanuel Akponah</p>
+          <p>287k Views • 7 days</p>
+        </div>
+        <div class="video-card" data-video-id="7">
+          <video controls class="videos" poster="">
+            <source src="videos/Ada song.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+          <div class="video-title">
+            <img
+              src="images/coding your future.png"
+              alt=""
+              class="channel-logo"
+            />
+            <h3>Ada Ehi - Congratulations</h3>
+          </div>
+          <p>Albert Sigax</p>
+          <p>501k Views • 2 days</p>
+        </div>
+        <div class="video-card" data-video-id="8">
+          <video controls class="videos" poster="">
+            <source src="videos/cryptocurrency prophecy.mp4" type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+          <div class="video-title">
+            <img
+              src="images/coding your future.png"
+              alt=""
+              class="channel-logo"
+            />
+            <h3>Cryptocurrency Prophecy</h3>
+          </div>
+          <p>@JP</p>
+          <p>3M Views • 2 days</p>
+        </div>
+        <div class="video-card" data-video-id="9">
           <video controls class="videos" poster="images/symphony.jpg">
             <source src="videos/like synphony.mp4" type="video/mp4" />
             Your browser does not support the video tag.
@@ -165,7 +311,7 @@
           </div>
           <p>Front-End Bootcamp</p>
         </div>
-        <div class="video-card">
+        <div class="video-card" data-video-id="10">
           <video controls class="videos" poster="images/motivation.webp">
             <source src="videos/motivation.mp4" type="video/mp4" />
             Your browser does not support the video tag.
@@ -180,7 +326,7 @@
           </div>
           <p>Front-End Bootcampt</p>
         </div>
-        <div class="video-card">
+        <div class="video-card" data-video-id="11">
           <video controls class="videos" poster="images/symphony.jpg">
             <source src="videos/like synphony.mp4" type="video/mp4" />
             Your browser does not support the video tag.
@@ -195,127 +341,7 @@
           </div>
           <p>Front-End Bootcamp</p>
         </div>
-        <div class="video-card">
-          <video controls class="videos" poster="images/motivation.webp">
-            <source src="videos/motivation.mp4" type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
-          <div class="video-title">
-            <img
-              src="images/coding your future.png"
-              alt=""
-              class="channel-logo"
-            />
-            <h3>Strong Motivation</h3>
-          </div>
-          <p>Front-End Bootcampt</p>
-        </div>
-        <div class="video-card">
-          <video controls class="videos" poster="images/symphony.jpg">
-            <source src="videos/like synphony.mp4" type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
-          <div class="video-title">
-            <img
-              src="images/coding your future.png"
-              alt=""
-              class="channel-logo"
-            />
-            <h3>It's like a Symphony</h3>
-          </div>
-          <p>Front-End Bootcamp</p>
-        </div>
-        <div class="video-card">
-          <video controls class="videos" poster="images/motivation.webp">
-            <source src="videos/motivation.mp4" type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
-          <div class="video-title">
-            <img
-              src="images/coding your future.png"
-              alt=""
-              class="channel-logo"
-            />
-            <h3>Strong Motivation</h3>
-          </div>
-          <p>Front-End Bootcampt</p>
-        </div>
-        <div class="video-card">
-          <video controls class="videos" poster="images/symphony.jpg">
-            <source src="videos/like synphony.mp4" type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
-          <div class="video-title">
-            <img
-              src="images/coding your future.png"
-              alt=""
-              class="channel-logo"
-            />
-            <h3>It's like a Symphony</h3>
-          </div>
-          <p>Front-End Bootcamp</p>
-        </div>
-        <div class="video-card">
-          <video controls class="videos" poster="images/motivation.webp">
-            <source src="videos/motivation.mp4" type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
-          <div class="video-title">
-            <img
-              src="images/coding your future.png"
-              alt=""
-              class="channel-logo"
-            />
-            <h3>Strong Motivation</h3>
-          </div>
-          <p>Front-End Bootcampt</p>
-        </div>
-        <div class="video-card">
-          <video controls class="videos" poster="images/symphony.jpg">
-            <source src="videos/like synphony.mp4" type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
-          <div class="video-title">
-            <img
-              src="images/coding your future.png"
-              alt=""
-              class="channel-logo"
-            />
-            <h3>It's like a Symphony</h3>
-          </div>
-          <p>Front-End Bootcamp</p>
-        </div>
-        <div class="video-card">
-          <video controls class="videos" poster="images/motivation.webp">
-            <source src="videos/motivation.mp4" type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
-          <div class="video-title">
-            <img
-              src="images/coding your future.png"
-              alt=""
-              class="channel-logo"
-            />
-            <h3>Strong Motivation</h3>
-          </div>
-          <p>Front-End Bootcampt</p>
-        </div>
-        <div class="video-card">
-          <video controls class="videos" poster="images/symphony.jpg">
-            <source src="videos/like synphony.mp4" type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
-          <div class="video-title">
-            <img
-              src="images/coding your future.png"
-              alt=""
-              class="channel-logo"
-            />
-            <h3>It's like a Symphony</h3>
-          </div>
-          <p>Front-End Bootcamp</p>
-        </div>
-        <div class="video-card">
+        <div class="video-card" data-video-id="12">
           <video controls class="videos" poster="images/motivation.webp">
             <source src="videos/motivation.mp4" type="video/mp4" />
             Your browser does not support the video tag.
@@ -331,8 +357,27 @@
           <p>Front-End Bootcamp</p>
         </div>
       </div>
-    </main>
 
+      <!-- Video Player Section (Hidden by Default) -->
+      <section class="video-player-section" style="display: none">
+        <div class="video-player">
+          <video controls class="large-video" id="large-video">
+            <source src="" type="video/mp4" id="large-video-source" />
+            Your browser does not support the video tag.
+          </video>
+          <h2 id="video-title">Video Title</h2>
+          <p id="video-channel">Channel Name</p>
+          <p id="video-stats">Views • Time</p>
+          <button onclick="showGridView()">Back to Home</button>
+        </div>
+        <div class="related-videos">
+          <h3>Related Videos</h3>
+          <div class="related-video-list" id="related-video-list">
+            <!-- Related videos will be populated dynamically -->
+          </div>
+        </div>
+      </section>
+    </main>
     <script src="script.js"></script>
   </body>
 </html>
