@@ -6,23 +6,26 @@
     <title>YouTube Clone</title>
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" href="styles.css" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
   </head>
   <body class="light-mode">
     <!-- Header -->
     <header>
-      <div class="logo-container">
-        <img
-          src="images/youtube-logo2.png"
-          alt="YouTube logo"
-          class="logo-img"
-        />
-        <div class="logo">YouTube</div>
+
+      <div class="header-left">
+        <button class="menu-btn" id="menuToggle">
+          <i class="fas fa-bars"></i>
+        </button>
+        <div class="logo">
+          <i class="fab fa-youtube"></i>
+          <span>YouTube</span>
+        </div>
       </div>
       <input
         type="text"
         name=""
         id="find"
-        placeholder="search"
+        placeholder="Search"
         class="search-bar"
         onkeyup="search()"
       />
@@ -32,25 +35,125 @@
     </header>
 
     <!-- Sidebar -->
-    <aside class="sidebar">
-      <ul>
-        <li>Home</li>
-        <li>Trending</li>
-        <li>Subscriptions</li>
-        <li>Library</li>
-        <hr />
-        <li>History</li>
-        <li>Playlist</li>
-        <li>Messages</li>
-        <li>Show more</li>
-        <hr />
-        <h3>SUBSCRIPTIONS</h3>
-        <li>Pascal</li>
-        <li>Godfrey</li>
-        <li>John</li>
-        <li>Akponah</li>
-      </ul>
-    </aside>
+    <nav class="sidebar" id="sidebar">
+        <div class="sidebar-content">
+            <input type="radio" name="nav" id="home" checked>
+            <label for="home" class="sidebar-item">
+                <i class="fas fa-home"></i>
+                <span>Home</span>
+            </label>
+            
+            <input type="radio" name="nav" id="explore">
+            <label for="explore" class="sidebar-item">
+                <i class="fas fa-compass"></i>
+                <span>Explore</span>
+            </label>
+            
+            <input type="radio" name="nav" id="shorts">
+            <label for="shorts" class="sidebar-item">
+                <i class="fas fa-play-circle"></i>
+                <span>Shorts</span>
+            </label>
+            
+            <input type="radio" name="nav" id="subscriptions">
+            <label for="subscriptions" class="sidebar-item">
+                <i class="fas fa-rss"></i>
+                <span>Subscriptions</span>
+            </label>
+            
+            <hr class="sidebar-divider">
+            
+            <input type="radio" name="nav" id="your-videos">
+            <label for="your-videos" class="sidebar-item">
+                <i class="fas fa-video"></i>
+                <span>Your videos</span>
+            </label>
+            
+            <input type="radio" name="nav" id="history">
+            <label for="history" class="sidebar-item">
+                <i class="fas fa-history"></i>
+                <span>History</span>
+            </label>
+            
+            <input type="radio" name="nav" id="watch-later">
+            <label for="watch-later" class="sidebar-item">
+                <i class="fas fa-clock"></i>
+                <span>Watch later</span>
+            </label>
+            
+            <input type="radio" name="nav" id="liked">
+            <label for="liked" class="sidebar-item">
+                <i class="fas fa-thumbs-up"></i>
+                <span>Liked videos</span>
+            </label>
+            
+            <hr class="sidebar-divider">
+            
+            <h3 class="sidebar-title">Subscriptions</h3>
+            
+            <input type="radio" name="nav" id="channel1">
+            <label for="channel1" class="sidebar-item">
+                <img src="images/smartphone.jpg" alt="Channel">
+                <span>Tech Channel</span>
+            </label>
+            
+            <input type="radio" name="nav" id="channel2">
+            <label for="channel2" class="sidebar-item">
+                <img src="images/guitar.jpg" alt="Channel">
+                <span>Music World</span>
+            </label>
+            
+            <input type="radio" name="nav" id="channel3">
+            <label for="channel3" class="sidebar-item">
+                <img src="images/game.jpg" alt="Channel">
+                <span>Gaming Hub</span>
+            </label>
+        </div>
+    </nav>
+
+    <main class="main-content" id="mainContent">
+        <!-- Category Pills -->
+        <div class="category-container">
+            <div class="category-pills">
+                <input type="radio" name="category" id="cat-all" checked>
+                <label for="cat-all" class="pill">All</label>
+                
+                <input type="radio" name="category" id="cat-music">
+                <label for="cat-music" class="pill">Music</label>
+                
+                <input type="radio" name="category" id="cat-gaming">
+                <label for="cat-gaming" class="pill">Gaming</label>
+                
+                <input type="radio" name="category" id="cat-news">
+                <label for="cat-news" class="pill">News</label>
+                
+                <input type="radio" name="category" id="cat-sports">
+                <label for="cat-sports" class="pill">Sports</label>
+                
+                <input type="radio" name="category" id="cat-tech">
+                <label for="cat-tech" class="pill">Technology</label>
+                
+                <input type="radio" name="category" id="cat-entertainment">
+                <label for="cat-entertainment" class="pill">Entertainment</label>
+                
+                <input type="radio" name="category" id="cat-education">
+                <label for="cat-education" class="pill">Education</label>
+                
+                <input type="radio" name="category" id="cat-travel">
+                <label for="cat-travel" class="pill">Travel</label>
+                
+                <input type="radio" name="category" id="cat-food">
+                <label for="cat-food" class="pill">Food</label>
+                
+                <input type="radio" name="category" id="cat-fashion">
+                <label for="cat-fashion" class="pill">Fashion</label>
+                
+                <input type="radio" name="category" id="cat-science">
+                <label for="cat-science" class="pill">Science</label>
+            </div>
+        </div>
+
+
 
     <!-- Main Content -->
     <main>
@@ -251,7 +354,7 @@
             />
             <h3>Strong Motivation</h3>
           </div>
-          <p>Front-End Bootcampt</p>
+          <p>Front-End Bootcamp</p>
         </div>
       </div>
 
