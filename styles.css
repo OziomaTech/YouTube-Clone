@@ -24,60 +24,64 @@ body {
 /* Header */
 header {
   display: flex;
-  justify-self: space-between;
+  justify-content: space-between;
   align-items: center;
-  padding: 10px 20px;
+  padding: 10px 15px;
   border-bottom: 1px solid #ccc;
+  flex-wrap: nowrap; /* Prevent wrapping on small screens */
 }
 
 .logo-container {
   display: flex;
-  justify-content: center;
   align-items: center;
+  flex-shrink: 0; /* Prevent logo from shrinking */
 }
 
 .logo {
-  font-size: 24px;
+  font-size: 20px; /* Slightly smaller for mobile */
   font-weight: bold;
   padding-left: 8px;
 }
 
 .logo-img {
-  width: 25px;
+  width: 22px; /* Slightly smaller */
   border-radius: 5px;
 }
 
 .darkmode-img {
-  width: 30px;
-  height: 25px;
+  width: 24px; /* Reduced size for better fit */
+  height: 20px;
   border-radius: 5px;
 }
 
 .search-bar {
   flex-grow: 1;
-  margin: 0 20px;
-  padding: 8px;
-  background: var(--card-bg); /* Use card background for contrast */
-  color: var(--text-color); /* Ensure text color changes with theme */
-  border: none;
-  background-color: var(--menu-bg);
-  border-radius: 8px;
+  margin: 0 10px; /* Reduced margin for small screens */
+  padding: 6px;
+  background: var(--card-bg);
+  color: var(--text-color);
+  border: 1px solid var(--text-color);
+  border-radius: 4px;
+  min-width: 100px; /* Ensure usability */
+  font-size: 14px; /* Slightly smaller text */
 }
 
 .theme-toggle {
-  padding: 2px 2px;
+  padding: 4px;
   cursor: pointer;
+  flex-shrink: 0; /* Prevent shrinking */
+  margin-left: 5px; /* Small margin for spacing */
 }
 
 /* Sidebar */
 .sidebar {
-  width: 200px;
+  width: 180px; /* Slightly narrower */
   position: fixed;
   top: 60px;
   left: 0;
   bottom: 0;
   background: var(--card-bg);
-  padding: 20px;
+  padding: 15px;
 }
 
 .sidebar ul {
@@ -86,15 +90,16 @@ header {
 }
 
 .sidebar li {
-  padding: 10px 0;
+  padding: 8px 0;
   cursor: pointer;
+  font-size: 14px; /* Smaller text for mobile */
 }
 
 /* Scroll Menu */
 .scroll-menu {
   display: flex;
   overflow-x: auto;
-  padding: 10px 0;
+  padding: 8px 0;
   background: var(--menu-bg);
   white-space: nowrap;
 }
@@ -104,11 +109,12 @@ header {
 }
 
 .menu-item {
-  padding: 8px 16px;
-  margin: 0 5px;
+  padding: 6px 12px; /* Reduced padding */
+  margin: 0 3px; /* Reduced margin */
   background: #ccc;
-  border-radius: 20px;
+  border-radius: 16px;
   cursor: pointer;
+  font-size: 13px; /* Smaller text */
 }
 
 .video-title {
@@ -117,61 +123,144 @@ header {
 }
 
 .channel-logo {
-  width: 35px;
-  height: 35px;
+  width: 32px;
+  height: 32px;
   border-radius: 50%;
-  margin-right: 10px;
+  margin-right: 8px;
 }
 
 /* Video Grid */
 .video-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 20px;
-  padding: 20px;
-  margin-left: 220px; /* Adjust for sidebar */
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 15px;
+  padding: 15px;
+  margin-left: 200px;
 }
 
 .video-card {
   background: var(--card-bg);
-  padding: 10px;
+  padding: 8px;
   border-radius: 8px;
 }
 
 .videos {
   width: 100%;
-  height: 150px;
-  transition: transform 0.5s ease;
+  height: 130px; /* Slightly smaller for mobile */
+  transition: transform 0.3s ease;
 }
 
 .videos:hover {
-  transform: scale(1.1);
+  transform: scale(1.05);
 }
 
 .thumbnail {
   width: 100%;
   height: auto;
-  transition: transform 0.5s ease;
+  transition: transform 0.3s ease;
 }
 
 .thumbnail:hover {
-  transform: scale(1.1); /* Expand on hover */
+  transform: scale(1.05);
+}
+
+/* Video Player Section */
+.video-player-section {
+  display: flex;
+  padding: 15px;
+  margin-left: 200px;
+  gap: 15px;
+}
+
+.video-player {
+  flex: 3;
+}
+
+.large-video {
+  width: 100%;
+  max-width: 800px;
+  height: 450px;
+  aspect-ratio: 16 / 9;
+  object-fit: contain;
+  border-radius: 8px;
+}
+
+.related-videos {
+  flex: 1;
+  max-width: 280px; /* Slightly narrower */
+}
+
+.related-video-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* Reuse video-card for related videos */
+.related-video-list .video-card {
+  margin: 0;
+}
+
+/* Hide video grid and scroll menu when player is active */
+.video-grid.hidden,
+.scroll-menu.hidden {
+  display: none;
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
   .sidebar {
-    display: none; /* Hide sidebar on mobile */
+    display: none;
   }
 
   .video-grid {
     margin-left: 0;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 12px;
+    padding: 12px;
+  }
+
+  .video-player-section {
+    flex-direction: column;
+    margin-left: 0;
+    padding: 12px;
+  }
+
+  .related-videos {
+    max-width: 100%;
+  }
+
+  .large-video {
+    max-width: 100%;
+    height: 220px; /* Slightly larger for clarity */
+    aspect-ratio: 16 / 9;
+  }
+
+  .video-card {
+    padding: 6px;
+  }
+
+  .videos {
+    height: 120px;
   }
 }
 
 @media (max-width: 480px) {
   .video-grid {
     grid-template-columns: 1fr;
+    gap: 10px;
+    padding: 10px;
   }
-}
+
+  .logo {
+    font-size: 18px;
+  }
+
+  .logo-img {
+    width: 20px;
+  }
+
+  .search-bar {
+    margin: 0 8px;
+    padding: 5px;
+    min-width
