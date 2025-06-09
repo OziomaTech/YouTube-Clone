@@ -1,37 +1,29 @@
 function toggleTheme() {
-  document.body.classList.toggle("dark-mode");
-  const theme = document.body.classList.contains("dark-mode")
-    ? "dark"
-    : "light";
-  localStorage.setItem("theme", theme);
+  const body = document.body;
+  const themeIcon = document.querySelector(".theme-icon");
+  if (!themeIcon) {
+    console.error("Theme icon not found");
+    return;
+  }
+  body.classList.toggle("dark-mode");
+  const isDarkMode = body.classList.contains("dark-mode");
+  localStorage.setItem("theme", isDarkMode ? "dark" : "light");
+  themeIcon.classList.toggle("fa-moon", !isDarkMode);
+  themeIcon.classList.toggle("fa-sun", isDarkMode);
 }
 
-// Sidebar Toggle
-const menuToggle = document.getElementById('menuToggle');
-const sidebar = document.getElementById('sidebar');
-const mainContent = document.getElementById('mainContent');
-
-menuToggle.addEventListener('click', () => {
-    sidebar.classList.toggle('collapsed');
-    mainContent.classList.toggle('expanded');
-});
-
-
-// Load saved theme and add event listeners
-
-window.onload = () => {
-  const savedTheme = localStorage.getItem("theme");
-  if (savedTheme === "dark") {
-    document.body.classList.add("dark-mode");
+function toggleSidebar() {
+  const sidebar = document.querySelector("#sidebar");
+  if (!sidebar) {
+    console.error("Sidebar not found");
+    return;
   }
-
-  // Add click event listeners to grid videos
-  document.querySelectorAll(".videos").forEach((video) => {
-    video.addEventListener("click", handleVideoClick);
-    video.loop = false; // Prevent auto-repeat
-    video.controls = true; // Keep controls for user interaction
-  });
-};
+  sidebar.classList.toggle("active");
+  console.log(
+    "Sidebar toggled:",
+    sidebar.classList.contains("active") ? "visible" : "collapsed"
+  );
+}
 
 function search() {
   const searchInput = document.getElementById("find");
@@ -41,7 +33,6 @@ function search() {
   videoCards.forEach((card) => {
     const title = card.querySelector("h3").textContent.toLowerCase();
     const creator = card.querySelector("p").textContent.toLowerCase();
-
     if (title.includes(searchTerm) || creator.includes(searchTerm)) {
       card.style.display = "block";
     } else {
@@ -50,7 +41,23 @@ function search() {
   });
 }
 
-// Sample video data (based on your HTML)
+function filterByCategory() {
+  const selectedCategory = document
+    .querySelector('input[name="category"]:checked')
+    .id.replace("cat-", "")
+    .toLowerCase();
+  const videoCards = document.querySelectorAll(".video-card");
+
+  videoCards.forEach((card) => {
+    const title = card.querySelector("h3").textContent.toLowerCase();
+    if (selectedCategory === "all" || title.includes(selectedCategory)) {
+      card.style.display = "block";
+    } else {
+      card.style.display = "none";
+    }
+  });
+}
+
 const videos = [
   {
     id: 1,
@@ -73,7 +80,7 @@ const videos = [
     title: "Nebulos News",
     channel: "Pascal Sigauke",
     src: "videos/nebulos news update.mp4",
-    poster: "",
+    poster: "images/symphony.jpg",
     stats: "1.8M Views • 5 hours",
   },
   {
@@ -81,7 +88,7 @@ const videos = [
     title: "(Nigeria is blessed) The crypto system began in Nigeria",
     channel: "Emmanuel Akponah",
     src: "videos/Nigeria crypto system.mp4",
-    poster: "",
+    poster: "images/symphony.jpg",
     stats: "989k Views • 4 days",
   },
   {
@@ -89,7 +96,7 @@ const videos = [
     title: "Now is the time",
     channel: "Pascal Sigauke",
     src: "videos/now is the time.mp4",
-    poster: "",
+    poster: "images/symphony.jpg",
     stats: "586k Views • 2 hours",
   },
   {
@@ -97,7 +104,7 @@ const videos = [
     title: "Grow with Emma",
     channel: "Emmanuel Akponah",
     src: "videos/grow with Emma.mp4",
-    poster: "",
+    poster: "images/symphony.jpg",
     stats: "287k Views • 7 days",
   },
   {
@@ -105,7 +112,7 @@ const videos = [
     title: "Ada Ehi - Congratulations",
     channel: "Albert Sigax",
     src: "videos/Ada song.mp4",
-    poster: "",
+    poster: "images/symphony.jpg",
     stats: "501k Views • 2 days",
   },
   {
@@ -113,7 +120,7 @@ const videos = [
     title: "Cryptocurrency Prophecy",
     channel: "@JP",
     src: "videos/cryptocurrency prophecy.mp4",
-    poster: "",
+    poster: "images/symphony.jpg",
     stats: "3M Views • 2 days",
   },
   {
@@ -127,7 +134,7 @@ const videos = [
   {
     id: 10,
     title: "Strong Motivation",
-    channel: "Front-End Bootcampt",
+    channel: "Front-End Bootcamp",
     src: "videos/motivation.mp4",
     poster: "images/motivation.webp",
     stats: "",
@@ -143,113 +150,117 @@ const videos = [
   {
     id: 12,
     title: "Strong Motivation",
-    channel: "Front-End Bootcampt",
+    channel: "Front-End Bootcamp",
     src: "videos/motivation.mp4",
     poster: "images/motivation.webp",
     stats: "",
   },
 ];
 
-// Pause all videos
 function pauseAllVideos() {
   document.querySelectorAll("video").forEach((video) => {
     video.pause();
-    video.currentTime = 0; // Reset to start
+    video.currentTime = 0;
   });
 }
 
-// Handle video click event in grid
 function handleVideoClick(e) {
-  e.preventDefault(); // Prevent default video playback
+  e.preventDefault();
   const video = e.target;
-  pauseAllVideos(); // Pause all videos
+  pauseAllVideos();
   const videoCard = video.closest(".video-card");
   const videoId = videoCard.getAttribute("data-video-id");
   const videoData = videos.find((v) => v.id == videoId);
 
-  // Update large video player
   const largeVideo = document.querySelector("#large-video");
   const largeVideoSource = document.querySelector("#large-video-source");
   largeVideoSource.src = videoData.src;
-  largeVideo.poster = videoData.poster || "";
-  largeVideo.loop = false; // Prevent auto-repeat
+  largeVideo.poster = videoData.poster || "images/symphony.jpg";
+  largeVideo.loop = false;
   largeVideo.load();
   largeVideo.play().catch((error) => {
-    console.error("Auto-play failed:", error); // Handle auto-play restrictions
+    console.error("Auto-play failed:", error);
   });
   document.querySelector("#video-title").textContent = videoData.title;
   document.querySelector("#video-channel").textContent = videoData.channel;
   document.querySelector("#video-stats").textContent = videoData.stats || "";
 
-  // Populate related videos (all videos except the selected one)
   const relatedList = document.querySelector("#related-video-list");
   relatedList.innerHTML = "";
   document.querySelectorAll(".video-grid .video-card").forEach((card) => {
     if (card.getAttribute("data-video-id") !== videoId) {
       const clonedCard = card.cloneNode(true);
       const clonedVideo = clonedCard.querySelector(".videos");
-      clonedVideo.removeAttribute("controls"); // Disable controls to prevent playback
+      clonedVideo.removeAttribute("controls");
       clonedVideo.removeAttribute("autoplay");
       clonedVideo.pause();
-      clonedVideo.loop = false; // Prevent auto-repeat
-      // Remove any click event listeners
-      clonedVideo.replaceWith(clonedVideo.cloneNode(true)); // Clone without event listeners
+      clonedVideo.loop = false;
+      clonedVideo.addEventListener("click", handleVideoClick);
       relatedList.appendChild(clonedCard);
     }
   });
 
-  // Show player section, hide grid and scroll menu
   document.querySelector(".video-player-section").style.display = "flex";
   document.querySelector(".video-grid").classList.add("hidden");
-  document.querySelector(".scroll-menu").classList.add("hidden");
+  document.querySelector(".category-container").classList.add("hidden");
+
+  const sidebar = document.querySelector("#sidebar");
+  if (sidebar) {
+    sidebar.classList.remove("active");
+  }
 }
 
-// Handle clicks on related videos
-document.addEventListener("click", (e) => {
-  const relatedCard = e.target.closest(".video-card");
-  if (relatedCard && relatedCard.parentElement.id === "related-video-list") {
-    pauseAllVideos(); // Pause all videos
-    const videoId = relatedCard.getAttribute("data-video-id");
-    const videoData = videos.find((v) => v.id == videoId);
-
-    // Update large video player
-    const largeVideo = document.querySelector("#large-video");
-    const largeVideoSource = document.querySelector("#large-video-source");
-    largeVideoSource.src = videoData.src;
-    largeVideo.poster = videoData.poster || "";
-    largeVideo.loop = false; // Prevent auto-repeat
-    largeVideo.load();
-    largeVideo.play().catch((error) => {
-      console.error("Auto-play failed:", error); // Handle auto-play restrictions
-    });
-    document.querySelector("#video-title").textContent = videoData.title;
-    document.querySelector("#video-channel").textContent = videoData.channel;
-    document.querySelector("#video-stats").textContent = videoData.stats || "";
-
-    // Update related videos
-    const relatedList = document.querySelector("#related-video-list");
-    relatedList.innerHTML = "";
-    document.querySelectorAll(".video-grid .video-card").forEach((card) => {
-      if (card.getAttribute("data-video-id") !== videoId) {
-        const clonedCard = card.cloneNode(true);
-        const clonedVideo = clonedCard.querySelector(".videos");
-        clonedVideo.removeAttribute("controls"); // Disable controls to prevent playback
-        clonedVideo.removeAttribute("autoplay");
-        clonedVideo.pause();
-        clonedVideo.loop = false; // Prevent auto-repeat
-        // Remove any click event listeners
-        clonedVideo.replaceWith(clonedVideo.cloneNode(true)); // Clone without event listeners
-        relatedList.appendChild(clonedCard);
-      }
-    });
-  }
-});
-
-// Return to grid view
 function showGridView() {
   document.querySelector(".video-player-section").style.display = "none";
   document.querySelector(".video-grid").classList.remove("hidden");
-  document.querySelector(".scroll-menu").classList.remove("hidden");
-  pauseAllVideos(); // Pause all videos
-  search(); // Reapply search filter
+  document.querySelector(".category-container").classList.remove("hidden");
+  pauseAllVideos();
+  search();
 }
+
+window.onload = () => {
+  const savedTheme = localStorage.getItem("theme");
+  const themeIcon = document.querySelector(".theme-icon");
+  if (!themeIcon) {
+    console.error("Theme icon not found during initialization");
+  } else {
+    if (savedTheme === "dark") {
+      document.body.classList.add("dark-mode");
+      themeIcon.classList.remove("fa-moon");
+      themeIcon.classList.add("fa-sun");
+    } else {
+      document.body.classList.remove("dark-mode");
+      themeIcon.classList.add("fa-moon");
+      themeIcon.classList.remove("fa-sun");
+    }
+  }
+
+  const sidebar = document.querySelector("#sidebar");
+  if (sidebar && window.innerWidth <= 768) {
+    sidebar.classList.remove("active"); // Ensure sidebar is collapsed on mobile
+  }
+
+  document.querySelectorAll(".videos").forEach((video) => {
+    video.addEventListener("click", handleVideoClick);
+    video.loop = false;
+    video.controls = true;
+  });
+
+  const menuToggleBtn = document.querySelector("#menuToggle");
+  if (menuToggleBtn) {
+    menuToggleBtn.addEventListener("click", toggleSidebar);
+  } else {
+    console.error("Menu toggle button not found");
+  }
+
+  const themeToggleBtn = document.querySelector("#themeToggle");
+  if (themeToggleBtn) {
+    themeToggleBtn.addEventListener("click", toggleTheme);
+  } else {
+    console.error("Theme toggle button not found");
+  }
+
+  document.querySelectorAll('input[name="category"]').forEach((input) => {
+    input.addEventListener("change", filterByCategory);
+  });
+};

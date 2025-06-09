@@ -6,12 +6,14 @@
     <title>YouTube Clone</title>
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
     <link rel="stylesheet" href="styles.css" />
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
   </head>
   <body class="light-mode">
     <!-- Header -->
     <header>
-
       <div class="header-left">
         <button class="menu-btn" id="menuToggle">
           <i class="fas fa-bars"></i>
@@ -23,147 +25,138 @@
       </div>
       <input
         type="text"
-        name=""
         id="find"
         placeholder="Search"
         class="search-bar"
         onkeyup="search()"
       />
-      <button class="theme-toggle" onclick="toggleTheme()">
-        <img src="images/dark-mode.png" alt="" class="darkmode-img" />
+      <button class="theme-toggle" id="themeToggle">
+        <i class="fas fa-moon theme-icon"></i>
       </button>
     </header>
 
     <!-- Sidebar -->
     <nav class="sidebar" id="sidebar">
-        <div class="sidebar-content">
-            <input type="radio" name="nav" id="home" checked>
-            <label for="home" class="sidebar-item">
-                <i class="fas fa-home"></i>
-                <span>Home</span>
-            </label>
-            
-            <input type="radio" name="nav" id="explore">
-            <label for="explore" class="sidebar-item">
-                <i class="fas fa-compass"></i>
-                <span>Explore</span>
-            </label>
-            
-            <input type="radio" name="nav" id="shorts">
-            <label for="shorts" class="sidebar-item">
-                <i class="fas fa-play-circle"></i>
-                <span>Shorts</span>
-            </label>
-            
-            <input type="radio" name="nav" id="subscriptions">
-            <label for="subscriptions" class="sidebar-item">
-                <i class="fas fa-rss"></i>
-                <span>Subscriptions</span>
-            </label>
-            
-            <hr class="sidebar-divider">
-            
-            <input type="radio" name="nav" id="your-videos">
-            <label for="your-videos" class="sidebar-item">
-                <i class="fas fa-video"></i>
-                <span>Your videos</span>
-            </label>
-            
-            <input type="radio" name="nav" id="history">
-            <label for="history" class="sidebar-item">
-                <i class="fas fa-history"></i>
-                <span>History</span>
-            </label>
-            
-            <input type="radio" name="nav" id="watch-later">
-            <label for="watch-later" class="sidebar-item">
-                <i class="fas fa-clock"></i>
-                <span>Watch later</span>
-            </label>
-            
-            <input type="radio" name="nav" id="liked">
-            <label for="liked" class="sidebar-item">
-                <i class="fas fa-thumbs-up"></i>
-                <span>Liked videos</span>
-            </label>
-            
-            <hr class="sidebar-divider">
-            
-            <h3 class="sidebar-title">Subscriptions</h3>
-            
-            <input type="radio" name="nav" id="channel1">
-            <label for="channel1" class="sidebar-item">
-                <img src="images/smartphone.jpg" alt="Channel">
-                <span>Tech Channel</span>
-            </label>
-            
-            <input type="radio" name="nav" id="channel2">
-            <label for="channel2" class="sidebar-item">
-                <img src="images/guitar.jpg" alt="Channel">
-                <span>Music World</span>
-            </label>
-            
-            <input type="radio" name="nav" id="channel3">
-            <label for="channel3" class="sidebar-item">
-                <img src="images/game.jpg" alt="Channel">
-                <span>Gaming Hub</span>
-            </label>
-        </div>
+      <div class="sidebar-content">
+        <input type="radio" name="nav" id="home" checked />
+        <label for="home" class="sidebar-item">
+          <i class="fas fa-home"></i>
+          <span>Home</span>
+        </label>
+
+        <input type="radio" name="nav" id="explore" />
+        <label for="explore" class="sidebar-item">
+          <i class="fas fa-compass"></i>
+          <span>Explore</span>
+        </label>
+
+        <input type="radio" name="nav" id="shorts" />
+        <label for="shorts" class="sidebar-item">
+          <i class="fas fa-play-circle"></i>
+          <span>Shorts</span>
+        </label>
+
+        <input type="radio" name="nav" id="subscriptions" />
+        <label for="subscriptions" class="sidebar-item">
+          <i class="fas fa-rss"></i>
+          <span>Subscriptions</span>
+        </label>
+
+        <hr class="sidebar-divider" />
+
+        <input type="radio" name="nav" id="your-videos" />
+        <label for="your-videos" class="sidebar-item">
+          <i class="fas fa-video"></i>
+          <span>Your videos</span>
+        </label>
+
+        <input type="radio" name="nav" id="history" />
+        <label for="history" class="sidebar-item">
+          <i class="fas fa-history"></i>
+          <span>History</span>
+        </label>
+
+        <input type="radio" name="nav" id="watch-later" />
+        <label for="watch-later" class="sidebar-item">
+          <i class="fas fa-clock"></i>
+          <span>Watch later</span>
+        </label>
+
+        <input type="radio" name="nav" id="liked" />
+        <label for="liked" class="sidebar-item">
+          <i class="fas fa-thumbs-up"></i>
+          <span>Liked videos</span>
+        </label>
+
+        <hr class="sidebar-divider" />
+
+        <h3 class="sidebar-title">Subscriptions</h3>
+
+        <input type="radio" name="nav" id="channel1" />
+        <label for="channel1" class="sidebar-item">
+          <img
+            src="images/smartphone.jpg"
+            alt="Tech Channel"
+            class="channel-icon"
+          />
+          <span>Tech Channel</span>
+        </label>
+
+        <input type="radio" name="nav" id="channel2" />
+        <label for="channel2" class="sidebar-item">
+          <img src="images/guitar.jpg" alt="Music World" class="channel-icon" />
+          <span>Music World</span>
+        </label>
+
+        <input type="radio" name="nav" id="channel3" />
+        <label for="channel3" class="sidebar-item">
+          <img src="images/game.jpg" alt="Gaming Hub" class="channel-icon" />
+          <span>Gaming Hub</span>
+        </label>
+      </div>
     </nav>
 
-    <main class="main-content" id="mainContent">
-        <!-- Category Pills -->
-        <div class="category-container">
-            <div class="category-pills">
-                <input type="radio" name="category" id="cat-all" checked>
-                <label for="cat-all" class="pill">All</label>
-                
-                <input type="radio" name="category" id="cat-music">
-                <label for="cat-music" class="pill">Music</label>
-                
-                <input type="radio" name="category" id="cat-gaming">
-                <label for="cat-gaming" class="pill">Gaming</label>
-                
-                <input type="radio" name="category" id="cat-news">
-                <label for="cat-news" class="pill">News</label>
-                
-                <input type="radio" name="category" id="cat-sports">
-                <label for="cat-sports" class="pill">Sports</label>
-                
-                <input type="radio" name="category" id="cat-tech">
-                <label for="cat-tech" class="pill">Technology</label>
-                
-                <input type="radio" name="category" id="cat-entertainment">
-                <label for="cat-entertainment" class="pill">Entertainment</label>
-                
-                <input type="radio" name="category" id="cat-education">
-                <label for="cat-education" class="pill">Education</label>
-                
-                <input type="radio" name="category" id="cat-travel">
-                <label for="cat-travel" class="pill">Travel</label>
-                
-                <input type="radio" name="category" id="cat-food">
-                <label for="cat-food" class="pill">Food</label>
-                
-                <input type="radio" name="category" id="cat-fashion">
-                <label for="cat-fashion" class="pill">Fashion</label>
-                
-                <input type="radio" name="category" id="cat-science">
-                <label for="cat-science" class="pill">Science</label>
-            </div>
-        </div>
-
-
-
     <!-- Main Content -->
-    <main>
-      <!-- Side Scroll Menu -->
-      <div class="scroll-menu">
-        <div class="menu-item">All</div>
-        <div class="menu-item">Gaming</div>
-        <div class="menu-item">Music</div>
-        <div class="menu-item">Tech</div>
-        <div class="menu-item">Sports</div>
+    <main class="main-content" id="mainContent">
+      <!-- Category Pills -->
+      <div class="category-container">
+        <div class="category-pills">
+          <input type="radio" name="category" id="cat-all" checked />
+          <label for="cat-all" class="pill">All</label>
+
+          <input type="radio" name="category" id="cat-music" />
+          <label for="cat-music" class="pill">Music</label>
+
+          <input type="radio" name="category" id="cat-gaming" />
+          <label for="cat-gaming" class="pill">Gaming</label>
+
+          <input type="radio" name="category" id="cat-news" />
+          <label for="cat-news" class="pill">News</label>
+
+          <input type="radio" name="category" id="cat-sports" />
+          <label for="cat-sports" class="pill">Sports</label>
+
+          <input type="radio" name="category" id="cat-tech" />
+          <label for="cat-tech" class="pill">Technology</label>
+
+          <input type="radio" name="category" id="cat-entertainment" />
+          <label for="cat-entertainment" class="pill">Entertainment</label>
+
+          <input type="radio" name="category" id="cat-education" />
+          <label for="cat-education" class="pill">Education</label>
+
+          <input type="radio" name="category" id="cat-travel" />
+          <label for="cat-travel" class="pill">Travel</label>
+
+          <input type="radio" name="category" id="cat-food" />
+          <label for="cat-food" class="pill">Food</label>
+
+          <input type="radio" name="category" id="cat-fashion" />
+          <label for="cat-fashion" class="pill">Fashion</label>
+
+          <input type="radio" name="category" id="cat-science" />
+          <label for="cat-science" class="pill">Science</label>
+        </div>
       </div>
 
       <!-- Video Grid -->
@@ -176,7 +169,7 @@
           <div class="video-title">
             <img
               src="images/coding your future.png"
-              alt=""
+              alt="Channel Logo"
               class="channel-logo"
             />
             <h3>It's like a Symphony</h3>
@@ -192,7 +185,7 @@
           <div class="video-title">
             <img
               src="images/coding your future.png"
-              alt=""
+              alt="Channel Logo"
               class="channel-logo"
             />
             <h3>Strong Motivation</h3>
@@ -201,14 +194,14 @@
           <p>1.3M Views • 3 days</p>
         </div>
         <div class="video-card" data-video-id="3">
-          <video controls class="videos" poster="">
+          <video controls class="videos" poster="images/symphony.jpg">
             <source src="videos/nebulos news update.mp4" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
           <div class="video-title">
             <img
               src="images/coding your future.png"
-              alt=""
+              alt="Channel Logo"
               class="channel-logo"
             />
             <h3>Nebulos News</h3>
@@ -217,14 +210,14 @@
           <p>1.8M Views • 5 hours</p>
         </div>
         <div class="video-card" data-video-id="4">
-          <video controls class="videos" poster="">
+          <video controls class="videos" poster="images/symphony.jpg">
             <source src="videos/Nigeria crypto system.mp4" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
           <div class="video-title">
             <img
               src="images/coding your future.png"
-              alt=""
+              alt="Channel Logo"
               class="channel-logo"
             />
             <h3>(Nigeria is blessed) The crypto system began in Nigeria</h3>
@@ -233,14 +226,14 @@
           <p>989k Views • 4 days</p>
         </div>
         <div class="video-card" data-video-id="5">
-          <video controls class="videos" poster="">
+          <video controls class="videos" poster="images/symphony.jpg">
             <source src="videos/now is the time.mp4" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
           <div class="video-title">
             <img
               src="images/coding your future.png"
-              alt=""
+              alt="Channel Logo"
               class="channel-logo"
             />
             <h3>Now is the time</h3>
@@ -249,14 +242,14 @@
           <p>586k Views • 2 hours</p>
         </div>
         <div class="video-card" data-video-id="6">
-          <video controls class="videos" poster="">
+          <video controls class="videos" poster="images/symphony.jpg">
             <source src="videos/grow with Emma.mp4" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
           <div class="video-title">
             <img
               src="images/coding your future.png"
-              alt=""
+              alt="Channel Logo"
               class="channel-logo"
             />
             <h3>Grow with Emma</h3>
@@ -265,14 +258,14 @@
           <p>287k Views • 7 days</p>
         </div>
         <div class="video-card" data-video-id="7">
-          <video controls class="videos" poster="">
+          <video controls class="videos" poster="images/symphony.jpg">
             <source src="videos/Ada song.mp4" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
           <div class="video-title">
             <img
               src="images/coding your future.png"
-              alt=""
+              alt="Channel Logo"
               class="channel-logo"
             />
             <h3>Ada Ehi - Congratulations</h3>
@@ -281,14 +274,14 @@
           <p>501k Views • 2 days</p>
         </div>
         <div class="video-card" data-video-id="8">
-          <video controls class="videos" poster="">
+          <video controls class="videos" poster="images/symphony.jpg">
             <source src="videos/cryptocurrency prophecy.mp4" type="video/mp4" />
             Your browser does not support the video tag.
           </video>
           <div class="video-title">
             <img
               src="images/coding your future.png"
-              alt=""
+              alt="Channel Logo"
               class="channel-logo"
             />
             <h3>Cryptocurrency Prophecy</h3>
@@ -304,7 +297,7 @@
           <div class="video-title">
             <img
               src="images/coding your future.png"
-              alt=""
+              alt="Channel Logo"
               class="channel-logo"
             />
             <h3>It's like a Symphony</h3>
@@ -319,12 +312,12 @@
           <div class="video-title">
             <img
               src="images/coding your future.png"
-              alt=""
+              alt="Channel Logo"
               class="channel-logo"
             />
             <h3>Strong Motivation</h3>
           </div>
-          <p>Front-End Bootcampt</p>
+          <p>Front-End Bootcamp</p>
         </div>
         <div class="video-card" data-video-id="11">
           <video controls class="videos" poster="images/symphony.jpg">
@@ -334,7 +327,7 @@
           <div class="video-title">
             <img
               src="images/coding your future.png"
-              alt=""
+              alt="Channel Logo"
               class="channel-logo"
             />
             <h3>It's like a Symphony</h3>
@@ -349,7 +342,7 @@
           <div class="video-title">
             <img
               src="images/coding your future.png"
-              alt=""
+              alt="Channel Logo"
               class="channel-logo"
             />
             <h3>Strong Motivation</h3>
@@ -372,9 +365,7 @@
         </div>
         <div class="related-videos">
           <h3>Related Videos</h3>
-          <div class="related-video-list" id="related-video-list">
-            <!-- Related videos will be populated dynamically -->
-          </div>
+          <div class="related-video-list" id="related-video-list"></div>
         </div>
       </section>
     </main>
