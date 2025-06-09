@@ -342,7 +342,6 @@ input[name="category"]:checked + .pill {
 }
 
 /* Pagination */
-/* Pagination */
 .pagination {
   display: flex;
   justify-content: center;
@@ -369,19 +368,6 @@ input[name="category"]:checked + .pill {
 
 .pagination-link:hover:not(.disabled) {
   background: var(--hover-bg);
-}
-
-.pagination-link.active {
-  background: var(--text-color);
-  color: var(--bg-color);
-  border-color: var(--text-color);
-}
-
-.pagination-link.disabled {
-  background: var(--secondary-bg);
-  color: var(--secondary-text);
-  cursor: not-allowed;
-  pointer-events: none;
 }
 
 .pagination-link i {
